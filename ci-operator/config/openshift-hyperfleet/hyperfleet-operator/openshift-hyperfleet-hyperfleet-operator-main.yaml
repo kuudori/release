@@ -39,6 +39,11 @@ tests:
     make test
   container:
     from: src
+- as: verify-tekton-bundles
+  run_if_changed: ^(\.tekton/|Makefile$)
+  steps:
+    test:
+    - ref: hyperfleet-verify-tekton-bundles
 zz_generated_metadata:
   branch: main
   org: openshift-hyperfleet
